@@ -1,1 +1,5 @@
 docs/site/
+.tox
+__pycache__
+*.pyc
+.cache
