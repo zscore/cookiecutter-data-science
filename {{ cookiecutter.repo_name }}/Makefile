@@ -28,6 +28,15 @@ sync_data_to_s3:
 sync_data_from_s3:
 	aws s3 sync s3://$(BUCKET)/data/ data/
 
+{% if cookiecutter.include_virtualenv == 'yes' %}
+create_venv:
+	pip install -q virtualenv,virtualenvwrapper
+	mkvirtualenv {{ cookiecutter.repo_name }}
+
+start_venv:
+	workon {{ cookiecutter.repo_name }}
+{% endif %}
+
 #################################################################################
 # PROJECT RULES                                                                 #
 #################################################################################
