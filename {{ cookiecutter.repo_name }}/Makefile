@@ -46,6 +46,15 @@ start_venv:
 	workon {{ cookiecutter.repo_name }}
 {% endif %}
 
+{% if cookiecutter.include_virtualenv == 'yes' %}
+create_venv:
+	pip install -q virtualenv,virtualenvwrapper
+	mkvirtualenv {{ cookiecutter.repo_name }}
+
+start_venv:
+	workon {{ cookiecutter.repo_name }}
+{% endif %}
+
 #################################################################################
 # PROJECT RULES                                                                 #
 #################################################################################
