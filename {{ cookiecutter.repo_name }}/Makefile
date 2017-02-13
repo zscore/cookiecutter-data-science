@@ -15,7 +15,7 @@ IS_ANACONDA=$(shell python -c "import sys;t=str('conda' in sys.version.lower() o
 
 ## Install Python Dependencies
 requirements: test_environment
-	pip install -r requirements.txt
+	pip install -r env/requirements-python.txt
 
 ## Make Dataset
 data: requirements
@@ -32,10 +32,16 @@ lint:
 ## Upload Data to S3
 sync_data_to_s3:
 	aws s3 sync data/ s3://$(BUCKET)/data/
+	aws s3 sync models/ s3://$(BUCKET)/models/
+	aws s3 sync reports/ s3://$(BUCKET)/reports/
+
 
 ## Download Data from S3
 sync_data_from_s3:
 	aws s3 sync s3://$(BUCKET)/data/ data/
+	aws s3 sync s3://$(BUCKET)/models/ models/
+	aws s3 sync s3://$(BUCKET)/reports/ reports/ 
+
 
 ## Set up python interpreter environment
 create_environment:

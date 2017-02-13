@@ -7,7 +7,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -71,3 +70,5 @@ target/
 
 # exclude data from source control by default
 /data/
+/logs/
+/tmp/
